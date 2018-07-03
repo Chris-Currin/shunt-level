@@ -28,10 +28,6 @@ RUN sudo chown -R jovyan /home/jovyan
 ENV HOME /home/jovyan
 ENV PATH /opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
 
-#Test matplotlib
-#RUN python -c "import matplotlib"
-#Install General MPI, such that mpi4py can later bind with it.
-
 WORKDIR $HOME
 RUN \
   wget http://www.neuron.yale.edu/ftp/neuron/versions/v7.5/nrn-7.5.tar.gz && \
@@ -43,7 +39,8 @@ RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt
 RUN sudo make all && \
    make install
 
-RUN make all && make install
+RUN make all
+RUN make install
 
 WORKDIR src/nrnpython
 ENV PATH /opt/conda/envs/python2/bin/:$PATH
