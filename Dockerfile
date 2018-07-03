@@ -13,14 +13,13 @@ USER root
 RUN apt-get update && apt-get install -y wget bzip2 ca-certificates automake libtool  \
                        python libpython-dev libncurses5-dev libreadline-dev libgsl0-dev cython \
                        cmake ssh
-
+RUN conda install -n python2 pandas numpy scipy matplotlib -y
 
 #Do the rest of the build  as user:
 #This will create a more familiar environment to continue developing in.
 #with less of a need to chown and chmod everything done as root at dockerbuild completion
 
 USER jovyan
-RUN conda install -n python2 pandas numpy scipy matplotlib -y
 RUN sudo chown -R jovyan /home/jovyan
 ENV HOME /home/jovyan
 ENV PATH /opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
