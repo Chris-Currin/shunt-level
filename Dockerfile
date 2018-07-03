@@ -39,8 +39,7 @@ RUN \
   rm nrn-7.5.tar.gz
 
 WORKDIR $HOME/nrn-7.5
-ENV PATH /usr/bin/python3/python:/opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
-RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt/conda/bin/python3
+RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt/conda/envs/python2/bin/python
 RUN sudo make all && \
    make install
 
