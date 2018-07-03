@@ -47,7 +47,8 @@ RUN make all
 RUN make install
 
 WORKDIR src/nrnpython
-RUN python setup.py install
+ENV PATH /opt/conda/envs/python2/bin/python2:$PATH
+RUN python2 setup.py install
 ENV NEURON_HOME $HOME/nrn-7.5/x86_64
 ENV PATH $NEURON_HOME/bin:$PATH
 
