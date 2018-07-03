@@ -43,8 +43,7 @@ RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt
 RUN sudo make all && \
    make install
 
-RUN make all
-RUN make install
+RUN make all && make install
 
 WORKDIR src/nrnpython
 ENV PATH /opt/conda/envs/python2/bin/:$PATH
