@@ -21,11 +21,11 @@ RUN apt-get update && apt-get install -y wget bzip2 ca-certificates default-jre 
 #This will create a more familiar environment to continue developing in.
 #with less of a need to chown and chmod everything done as root at dockerbuild completion
 
-USER cbc
+USER jovyan
 # Use numpy 1.12.1 until quantities is compatible with 1.13.
 RUN conda install -y scipy numpy==1.12.1 matplotlib
-RUN sudo chown -R cbc /home/cbc
-ENV HOME /home/cbc
+RUN sudo chown -R jovyan /home/jovyan
+ENV HOME /home/jovyan
 ENV PATH /opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
 
 #Test matplotlib
