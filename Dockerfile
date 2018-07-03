@@ -46,5 +46,5 @@ ENV PATH $NEURON_HOME/bin:$PATH
 
 # Get shunt level
 WORKDIR $HOME
-RUN git clone https://github.com/Chris-Currin/shunt-level
+RUN git clone https://github.com/Chris-Currin/shunt-level/tree/master
 WORKDIR shunt-level
