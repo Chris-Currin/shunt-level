@@ -37,10 +37,9 @@ RUN \
 WORKDIR $HOME/nrn-7.5
 RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt/conda/envs/python2/bin/python
 RUN sudo make all && \
+   make install && \
+   make all && \
    make install
-
-RUN make all
-RUN make install
 
 WORKDIR src/nrnpython
 ENV PATH /opt/conda/envs/python2/bin/:$PATH
