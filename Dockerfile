@@ -10,11 +10,9 @@ FROM scidash/scipy-notebook-plus
 #Also DO this part as root.
 USER root
 
-RUN apt-get update && apt-get install -y wget bzip2 ca-certificates default-jre default-jdk maven automake libtool  \
-                       wget python3 libpython3-dev libncurses5-dev libreadline-dev libgsl0-dev cython3 \
-                       python3-pip python3-numpy python3-scipy python3-matplotlib python3-mock \
-                       ipython3 python3-docutils \
-                       python3-mpi4py cmake ssh
+RUN apt-get update && apt-get install -y wget bzip2 ca-certificates automake libtool  \
+                       python2 libpython2-dev libncurses5-dev libreadline-dev libgsl0-dev cython2 \
+                       cmake ssh
 
 
 #Do the rest of the build  as user:
@@ -22,8 +20,7 @@ RUN apt-get update && apt-get install -y wget bzip2 ca-certificates default-jre 
 #with less of a need to chown and chmod everything done as root at dockerbuild completion
 
 USER jovyan
-# Use numpy 1.12.1 until quantities is compatible with 1.13.
-RUN conda install -y scipy numpy==1.12.1 matplotlib
+RUN conda install -n python2 pandas numpy scipy matplotlib -y
 RUN sudo chown -R jovyan /home/jovyan
 ENV HOME /home/jovyan
 ENV PATH /opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
@@ -37,8 +34,8 @@ RUN \
 WORKDIR $HOME/nrn-7.5
 RUN ./configure --prefix=`pwd` --with-paranrn --without-iv --with-nrnpython=/opt/conda/envs/python2/bin/python
 RUN sudo make all && \
-   make install && \
-   make all && \
+   make install
+RUN make all && \
    make install
 
 WORKDIR src/nrnpython
