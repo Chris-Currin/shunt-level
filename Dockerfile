@@ -58,5 +58,5 @@ ENV PATH $NEURON_HOME/bin:$PATH
 WORKDIR $HOME
 RUN git clone https://github.com/NeuroML/jNeuroML
 WORKDIR jNeuroML
-RUN python getNeuroML.py
+#RUN python getNeuroML.py
 WORKDIR $WORK_HOME
