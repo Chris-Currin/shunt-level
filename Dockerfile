@@ -11,7 +11,7 @@ FROM scidash/scipy-notebook-plus
 USER root
 
 RUN apt-get update && apt-get install -y wget bzip2 ca-certificates automake libtool  \
-                       python2 libpython2-dev libncurses5-dev libreadline-dev libgsl0-dev cython2 \
+                       python libpython-dev libncurses5-dev libreadline-dev libgsl0-dev cython \
                        cmake ssh
 
 
