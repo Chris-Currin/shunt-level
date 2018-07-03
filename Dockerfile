@@ -21,11 +21,11 @@ RUN apt-get update && apt-get install -y wget bzip2 ca-certificates default-jre 
 #This will create a more familiar environment to continue developing in.
 #with less of a need to chown and chmod everything done as root at dockerbuild completion
 
-USER jovyan
+USER cbc
 # Use numpy 1.12.1 until quantities is compatible with 1.13.
 RUN conda install -y scipy numpy==1.12.1 matplotlib
-RUN sudo chown -R jovyan /home/jovyan
-ENV HOME /home/jovyan
+RUN sudo chown -R cbc /home/cbc
+ENV HOME /home/cbc
 ENV PATH /opt/conda/bin:/opt/conda/bin/conda:/opt/conda/bin/python:$PATH
 
 #Test matplotlib
@@ -55,10 +55,8 @@ ENV PATH $NEURON_HOME/bin:$PATH
 
 # Get JNeuroML
 #Change to this when PR is accepted
-RUN git clone https://github.com/NeuroML/jNeuroML
 WORKDIR $HOME
-#RUN git clone https://github.com/russelljjarvis/jNeuroML.git
+RUN git clone https://github.com/NeuroML/jNeuroML
 WORKDIR jNeuroML
-RUN ls -ltr *.py
 RUN python getNeuroML.py
 WORKDIR $WORK_HOME
