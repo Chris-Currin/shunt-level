@@ -53,10 +53,7 @@ ENV NEURON_HOME $HOME/nrn-7.5/x86_64
 ENV PATH $NEURON_HOME/bin:$PATH
 
 
-# Get JNeuroML
-#Change to this when PR is accepted
+# Get shunt level
 WORKDIR $HOME
-RUN git clone https://github.com/NeuroML/jNeuroML
-WORKDIR jNeuroML
-#RUN python getNeuroML.py
-WORKDIR $WORK_HOME
+RUN git clone https://github.com/Chris-Currin/shunt-level
+WORKDIR shunt-level
