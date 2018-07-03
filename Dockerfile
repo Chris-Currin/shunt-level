@@ -43,8 +43,8 @@ RUN python2.7 setup.py install
 ENV NEURON_HOME $HOME/nrn-7.5/x86_64
 ENV PATH $NEURON_HOME/bin:$PATH
 
-
 # Get shunt level
 WORKDIR $HOME
-RUN git clone https://github.com/Chris-Currin/shunt-level/tree/master
+RUN ls
+RUN git clone https://github.com/Chris-Currin/shunt-level
 WORKDIR shunt-level
