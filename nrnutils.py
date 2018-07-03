@@ -170,7 +170,7 @@ if __name__ == "__main__":
     simple_neuron.soma.plot('v')
     simple_neuron.apical.plot('v')
     
-    print simple_neuron.gnabar
+#     print simple_neuron.gnabar
     simple_neuron.gnabar = 0.15
     assert simple_neuron.soma(0.5).hh.gnabar == 0.15
     
